@@ -1,0 +1,64 @@
+CAF-AI Chatbot Architecture Overview
+
+CAF-AI is designed to act as a digital commercialista, starting with support for IMU and expanding to other tax and filing needs. The client interacts through a conversational chatbot that routes requests to specialist agents.
+
+---
+
+1. Chatbot Interface (Frontend)
+- Natural, client-style conversation (like in-office or on-phone)
+- Recognizes intent and entities (e.g. "Devo pagare l'IMU a Milano?")
+- Maintains context/session memory
+- Optional: deploy via web UI, Telegram, or WhatsApp
+
+---
+
+2. Routing Core
+- Maps user questions to the correct strategy agent:
+  - IMU questions → IMUStrategyAgent
+  - Filing or deadline questions → FilingAgent, DeadlinesAgent
+  - Uploads or document-based queries → DocumentAgent
+
+---
+
+3. Agent Design Philosophy
+- No deliberation loops
+- Each agent is a domain expert with:
+  - Access to ChromaDB for tax rule insights
+  - Access to tools (calculations, date queries, municipality info)
+  - A clear, bounded responsibility
+
+Examples:
+- IMUStrategyAgent: Determines if the user needs to pay, calculates amount, and checks deadlines.
+- DeadlinesAgent: Tells the user when filings are due for their context.
+- FilingAgent: Helps with document generation or submission.
+
+---
+
+4. Tools Required
+- DateTool: “What’s the next deadline?” or “How many days until June 16?”
+- CalculationTool: Compute IMU amounts using formula (base value × rate × ownership %)
+- (Future) MunicipalityRatesTool: Fetch common rates for specific comuni
+
+---
+
+5. Knowledge Base
+- Structured ChromaDB with insight chunks:
+  - taxes/imu/qna.json
+  - deadlines/qna.json
+  - filing_procedures/qna.json
+- Agents query this for rule-based, expert responses
+
+---
+
+6. Document System (Phase 2)
+- Allow clients to upload files (e.g. previous F24s, visura)
+- Files tied to session/user and retrievable by agents
+- Future vision: agents read documents to extract relevant data
+
+---
+
+Next Steps
+1. Define message-routing logic (intent → agent)
+2. Build IMUStrategyAgent with ChromaDB connection, basic tools
+3. Test with simple input: "Devo pagare l'IMU per la prima casa a Milano nel 2025?"
+4. Expand to deadlines and documents in future phases

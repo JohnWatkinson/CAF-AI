@@ -1,0 +1,10 @@
+[
+  {
+    "question": "Qual è il codice tributo per pagare l'IMU su un terreno agricolo a Torino?",
+    "answer": "Il codice tributo per pagare l'IMU su un terreno agricolo è il 3918. Tale codice identifica la \"Imposta Municipale Propria sugli immobili rurali per l'agricoltura (IMU)\".\n\nEcco un esempio di come dovrebbe essere compilato il modello F24:\n- Nella sezione \"Erario\", alla voce \"codice tributo\" dovrebbe essere inserito il codice 3918.\n- Nella voce \"anno di riferimento\", dovresti inserire l'anno per il quale si sta pagando l'IMU (es. 2025)\n- Il \"comune\" verrà indicato con il codice catastale, che nel caso di Torino è L219.\n- Dovrai poi riportare l'importo dovuto.\n\nAttenzione: la misura dell'imposta cambia in base al comune di ubicazione del terreno, al valore dello stesso ed a vari fattori stabiliti dalla legge. Pertanto è fondamentale contattare l'ufficio tributi del Comune o consultare un professionista per determinare l'importo corretto da pagare.\n\nIl modulo F24 può essere scaricato dal sito ufficiale dell'Agenzia delle Entrate al seguente link: https://www.agenziaentrate.gov.it/portale/modulistica/f24.\nPer la compilazione del modello si può fare riferimento alla guida ufficiale dell'Agenzia delle Entrate disponibile sul loro sito.",
+    "topic": "f24",
+    "region": "torino",
+    "source": "f24_torino_qual_è_il_codice_tributo_per_pagare_l_imu_su_un_terreno_agri_2025-05-12.md",
+    "section": "user_verified"
+  }
+]
