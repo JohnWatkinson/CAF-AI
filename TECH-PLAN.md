@@ -73,15 +73,18 @@ FastAPI app with:
 - Session state stored in memory (dict) for PoC, Redis later
 - CORS enabled for Lovable frontend
 
-### 5. Simple UI (`src/api/static/index.html`)
-- Single HTML file, no framework, no build step
-- Chat interface that calls `POST /chat`
-- Temporary — Lovable replaces this later
+### 5. Frontend (`frontend/`)
+- Lovable-generated React app (Vite + Tailwind + shadcn/ui)
+- Chat interface with auto-start, markdown rendering, session management
+- `frontend/Dockerfile` — node build + nginx:alpine to serve static files
+- `VITE_API_URL=""` — same origin, nginx proxies API calls
 
 ### 6. Docker
-- `Dockerfile` — Python 3.11 slim, uvicorn on port 8000
-- `docker-compose.yml` — single service, .env for API key
-- Ready to add nginx, Redis, Postgres containers later (same pattern as fashion-starter)
+- `Dockerfile` (backend) — Python 3.11 slim, uvicorn on port 8000
+- `frontend/Dockerfile` — node build + nginx:alpine
+- `docker-compose.yml` — two services (backend + frontend)
+- `nginx.conf` — serves frontend at `/`, proxies `/chat`, `/reset`, `/health` to backend
+- `APP_PORT` env var — defaults to 80, set to 8080 on VPS
 
 ---
 
@@ -115,8 +118,15 @@ CAF-AI/
 │   │   ├── calc_15day_rule.yaml
 │   │   └── calc_edge_cases.yaml
 │   └── test_imu.py
+├── frontend/                   # ✅ Lovable React UI
+│   ├── src/
+│   │   ├── components/chat/    # Chat UI components
+│   │   ├── hooks/useChat.ts    # Chat state management
+│   │   └── lib/api.ts          # API client
+│   └── Dockerfile              # Node build + nginx
 ├── docker-compose.yml
 ├── Dockerfile
+├── nginx.conf                  # Frontend + API reverse proxy
 ├── requirements.txt
 └── .env.example
 ```
@@ -130,9 +140,10 @@ CAF-AI/
 3. ~~**Chat engine**~~ — done. Claude Sonnet 4.5 + tool use. CLI + web UI working.
 4. ~~**FastAPI API**~~ — done. POST /chat, session management, CORS.
 5. ~~**Simple UI**~~ — done. Single HTML chat interface served by FastAPI.
-6. ~~**Docker**~~ — done. Single container, docker-compose.
-7. **Deploy to VPS** — nginx, same pattern as fashion-starter ← **next**
-8. **Scraper** (later) — populate aliquote for more comuni
+6. ~~**Docker**~~ — done. Two containers (backend + frontend), nginx proxy, configurable port.
+7. ~~**Lovable frontend**~~ — done. React chat UI integrated into `frontend/`.
+8. **Deploy to VPS** — port 8080, same VPS as fashion-starter ← **next**
+9. **Scraper** (later) — populate aliquote for more comuni
 
 ---
 
