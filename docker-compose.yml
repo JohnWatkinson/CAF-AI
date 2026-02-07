@@ -1,8 +1,16 @@
 services:
-  caf-ai:
+  backend:
     build: .
-    ports:
-      - "8000:8000"
     env_file:
       - .env
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
     restart: unless-stopped
