@@ -2,50 +2,112 @@
 
 **Server:** Hostinger VPS (shared with fashion-starter)
 **SSH:** `ssh john@72.61.20.227`
-**Port:** 8080 (fashion-starter uses 80)
-**URL:** `http://72.61.20.227:8080`
+**Domain:** `https://caf-ai.maisonguida.com`
+**Internal port:** 8080 (Docker Compose) → proxied by VPS nginx
+
+---
+
+## Architecture on VPS
+
+```
+Internet
+  │
+  ├── caf-ai.maisonguida.com (443/SSL)
+  │     └── VPS nginx → proxy_pass localhost:8080
+  │           └── Docker Compose
+  │                 ├── frontend (nginx:alpine) → React UI + proxies /chat, /reset, /health
+  │                 └── backend (python:3.11)   → FastAPI + Claude API
+  │
+  ├── shop.maisonguida.com (443/SSL)
+  │     └── VPS nginx → PM2 (fashion-starter)
+  │
+  └── tracker.maisonguida.com (443/SSL)
+        └── VPS nginx → ...
+```
 
 ---
 
 ## First-Time Setup
 
+### 1. DNS (Hostinger panel)
+
+Add A record for `maisonguida.com`:
+- **Type:** A
+- **Name:** `caf-ai`
+- **Value:** `72.61.20.227`
+- **TTL:** default
+
+### 2. Deploy app
+
 ```bash
-# 1. SSH into VPS
 ssh john@72.61.20.227
 
-# 2. Clone repo
+# Clone
 cd ~
 git clone https://github.com/JohnWatkinson/CAF-AI.git
 cd CAF-AI
 
-# 3. Create .env
+# Create .env
 cat > .env << 'EOF'
 ANTHROPIC_API_KEY=sk-ant-your-key-here
 APP_PORT=8080
 EOF
 
-# 4. Build and start
+# Build and start
 docker compose up --build -d
 
-# 5. Verify
+# Verify
 curl http://localhost:8080/health
-# Open http://72.61.20.227:8080 in browser
 ```
+
+### 3. VPS nginx config
+
+```bash
+sudo nano /etc/nginx/sites-available/caf-ai_maisonguida_com
+```
+
+```nginx
+server {
+    listen 80;
+    server_name caf-ai.maisonguida.com;
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_read_timeout 120s;
+    }
+}
+```
+
+Enable and reload:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/caf-ai_maisonguida_com /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+### 4. SSL
+
+```bash
+sudo certbot --nginx -d caf-ai.maisonguida.com
+```
+
+Certbot auto-updates the nginx config with SSL directives and sets up auto-renewal.
 
 ---
 
 ## Deploy Code Changes
 
 ```bash
-# 1. SSH into VPS
 ssh john@72.61.20.227
-
-# 2. Pull and rebuild
 cd ~/CAF-AI
 git pull origin master
 docker compose up --build -d
 
-# 3. Verify
+# Verify
 docker compose ps
 curl http://localhost:8080/health
 ```
@@ -76,48 +138,28 @@ docker compose down
 
 ---
 
-## Architecture on VPS
+## Environment
 
+### .env (on VPS)
 ```
-Port 80  → fashion-starter (nginx + PM2)
-Port 8080 → CAF-AI (Docker Compose)
-             ├── frontend (nginx:alpine) → serves React UI + proxies API
-             └── backend (python:3.11)   → FastAPI + Claude API
-```
-
----
-
-## Future: Subdomain + SSL
-
-When ready for production:
-1. Point a subdomain (e.g., `imu.yourdomain.it`) to VPS IP
-2. Add VPS-level nginx config:
-
-```nginx
-server {
-    server_name imu.yourdomain.it;
-
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_read_timeout 120s;
-    }
-}
+ANTHROPIC_API_KEY=sk-ant-...
+APP_PORT=8080
 ```
 
-3. Add SSL: `sudo certbot --nginx -d imu.yourdomain.it`
-4. Keep APP_PORT=8080 in .env (nginx proxies to it)
+`APP_PORT` defaults to 80 for local dev. Set to 8080 on VPS to avoid conflict with fashion-starter on port 80.
 
 ---
 
 ## Checklist
 
 ### First Deploy
+- [ ] Add DNS A record: `caf-ai` → `72.61.20.227`
 - [ ] Clone repo on VPS
 - [ ] Create .env with API key + APP_PORT=8080
 - [ ] `docker compose up --build -d`
-- [ ] Test at http://72.61.20.227:8080
+- [ ] Create nginx site config
+- [ ] `sudo certbot --nginx -d caf-ai.maisonguida.com`
+- [ ] Test at https://caf-ai.maisonguida.com
 - [ ] Verify chat works end-to-end
 
 ### Code Updates
