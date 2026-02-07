@@ -1,0 +1,26 @@
+{
+  "comune": "Torino",
+  "provincia": "TO",
+  "anno": 2025,
+  "note": "Confermate anche per 2026 (delibera Consiglio Comunale dic 2025)",
+  "aliquote": {
+    "abitazione_principale_lusso": 5.75,
+    "altri_fabbricati": 10.6,
+    "alloggi_atc": 6.0,
+    "canone_concordato": 7.6,
+    "comodato_uso_gratuito": 7.6,
+    "aree_fabbricabili": 9.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.monitorimmobiliare.it/monitorimmobiliare/notizia/imu-torino-aliquota-prima-casa-a-575-per-mille-seconde-case-a-106/",
+    "http://www.comune.torino.it/tasse/bm~doc/2025_-riepilogo-aliquote-imu.pdf"
+  ]
+}

@@ -1,0 +1,50 @@
+# 15-day rule — calculate mesi di possesso from transfer date
+# These test calculate_mesi_possesso(), not calculate_imu()
+
+# Paolo's examples:
+# - Deed 4 April: seller 3 months, buyer 9 months
+# - Deed 17 October: seller 10 months, buyer 2 months
+# - Deed 15 May (31 days): seller 4, buyer 8
+# - Deed 15 November (30 days): equal → buyer gets month. Seller 10, buyer 2
+
+- name: "Deed 4 April — seller 3, buyer 9"
+  input:
+    data_atto: "2025-04-04"
+  expected:
+    seller_mesi: 3
+    buyer_mesi: 9
+
+- name: "Deed 17 October — seller 10, buyer 2"
+  input:
+    data_atto: "2025-10-17"
+  expected:
+    seller_mesi: 10
+    buyer_mesi: 2
+
+- name: "Deed 15 May (31-day month) — seller 4, buyer 8"
+  input:
+    data_atto: "2025-05-15"
+  expected:
+    seller_mesi: 4
+    buyer_mesi: 8
+
+- name: "Deed 15 November (30-day month) — equal, buyer gets month. Seller 10, buyer 2"
+  input:
+    data_atto: "2025-11-15"
+  expected:
+    seller_mesi: 10
+    buyer_mesi: 2
+
+- name: "Deed 1 January — seller 0, buyer 12"
+  input:
+    data_atto: "2025-01-01"
+  expected:
+    seller_mesi: 0
+    buyer_mesi: 12
+
+- name: "Deed 31 December — seller 12, buyer 0"
+  input:
+    data_atto: "2025-12-31"
+  expected:
+    seller_mesi: 12
+    buyer_mesi: 0

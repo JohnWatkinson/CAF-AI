@@ -1,0 +1,34 @@
+# Partial ownership scenarios
+
+- name: "50% ownership, full year"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 890.40
+
+- name: "25% ownership (inherited between 4 heirs)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 25
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+- name: "33.33% ownership (3 heirs)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 33.33
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 593.54

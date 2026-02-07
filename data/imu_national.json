@@ -1,0 +1,60 @@
+{
+  "rivalutazione": 1.05,
+  "rivalutazione_terreni": 1.25,
+  "coefficienti": {
+    "A/1":  160,
+    "A/2":  160,
+    "A/3":  160,
+    "A/4":  160,
+    "A/5":  160,
+    "A/6":  160,
+    "A/7":  160,
+    "A/8":  160,
+    "A/9":  160,
+    "A/10": 80,
+    "B/1":  140,
+    "B/2":  140,
+    "B/3":  140,
+    "B/4":  140,
+    "B/5":  140,
+    "B/6":  140,
+    "B/7":  140,
+    "B/8":  140,
+    "C/1":  55,
+    "C/2":  160,
+    "C/3":  140,
+    "C/4":  140,
+    "C/5":  140,
+    "C/6":  160,
+    "C/7":  160,
+    "D/1":  65,
+    "D/2":  65,
+    "D/3":  65,
+    "D/4":  65,
+    "D/5":  80,
+    "D/6":  65,
+    "D/7":  65,
+    "D/8":  65,
+    "D/9":  65,
+    "D/10": 65
+  },
+  "coefficiente_terreni_agricoli": 135,
+  "categorie_prima_casa_tassata": ["A/1", "A/8", "A/9"],
+  "sconti_nazionali": {
+    "canone_concordato": {
+      "tipo": "riduzione_imposta",
+      "percentuale": 25,
+      "descrizione": "Riduzione del 25% per immobili locati a canone concordato (3+2)"
+    },
+    "comodato_uso_gratuito": {
+      "tipo": "riduzione_base",
+      "percentuale": 50,
+      "descrizione": "Riduzione del 50% della base imponibile per comodato a parenti in linea retta (1° grado)"
+    },
+    "inagibile": {
+      "tipo": "riduzione_base",
+      "percentuale": 50,
+      "descrizione": "Riduzione del 50% della base imponibile per immobili inagibili/inabitabili"
+    }
+  }
+}

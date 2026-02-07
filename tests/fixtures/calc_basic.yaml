@@ -1,0 +1,50 @@
+# Basic IMU calculations — Paolo's worked examples
+# Full ownership, full year, simple cases
+
+- name: "Paolo example 1 — full ownership, full year, no discount"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000
+    imu_finale: 1276.80
+
+- name: "Paolo example 2 — 50% ownership, 6 months, 25% sconto"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 25
+  expected:
+    base_imponibile: 168000
+    imu_finale: 239.40
+
+- name: "Minimum case — small rendita, full year"
+  input:
+    rendita_catastale: 200
+    categoria: "A/3"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 33600
+    imu_finale: 356.16
+
+- name: "Torino second home — standard rate"
+  input:
+    rendita_catastale: 750
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 126000
+    imu_finale: 1335.60

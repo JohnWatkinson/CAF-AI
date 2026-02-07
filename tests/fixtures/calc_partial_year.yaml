@@ -1,0 +1,34 @@
+# Partial year (mesi di possesso) scenarios
+
+- name: "6 months possession"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 890.40
+
+- name: "1 month possession"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 1
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 148.40
+
+- name: "9 months — bought in April (buyer)"
+  input:
+    rendita_catastale: 500
+    categoria: "A/3"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 9
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 667.80

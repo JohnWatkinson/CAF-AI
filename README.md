@@ -4,8 +4,6 @@ Italian IMU (property tax) calculator with a conversational chat interface.
 
 **Stack:** Python / FastAPI / Docker
 
-**Current focus:** IMU calculator proof of concept — chat in Italian, get accurate IMU calculations with explanations.
-
 ## Docs
 
 - [TECH-PLAN.md](TECH-PLAN.md) — technical plan and build order
@@ -13,9 +11,17 @@ Italian IMU (property tax) calculator with a conversational chat interface.
 
 ## Status
 
-Setting up. Build order:
-1. IMU calculator (pure Python)
-2. Torino aliquote data
-3. Chat engine (LLM conversation layer)
+1. ~~IMU calculator (pure Python)~~ — done, 24 tests passing
+2. ~~Torino aliquote data~~ — done (2025/2026 rates)
+3. Chat engine (LLM conversation layer) — next
 4. FastAPI API
 5. Docker + deploy to VPS
+
+## Quick Start
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest tests/ -v
+```

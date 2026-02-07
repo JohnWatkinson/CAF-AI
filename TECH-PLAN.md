@@ -1,7 +1,7 @@
 # Tech Plan — IMU Calculator PoC
 
 **Date:** February 7, 2026
-**Status:** Draft
+**Status:** Active
 **Stack:** Python / FastAPI / Docker
 
 ---
@@ -82,19 +82,28 @@ FastAPI app with:
 ```
 CAF-AI/
 ├── docs/imu/                  # Specs (this file, calculation doc)
+├── data/
+│   ├── imu_national.json        # Coefficienti, rivalutazione, sconti nazionali
+│   └── aliquote/
+│       └── torino_2025.json     # Torino rates (confirmed 2026)
 ├── src/
-│   ├── calculator/
-│   │   ├── imu.py             # Pure calculation logic
-│   │   └── coefficienti.py    # Category → coefficient lookup
-│   ├── chat/
-│   │   ├── engine.py          # LLM conversation handler
-│   │   └── prompts.py         # System prompts (Italian)
-│   ├── data/
-│   │   └── aliquote/
-│   │       └── torino.json    # Torino rates
+│   ├── calculator/              # ✅ Done
+│   │   ├── imu.py               # Pure calculation logic
+│   │   └── coefficienti.py      # Category → coefficient lookup, data loader
+│   ├── chat/                    # Next
+│   │   ├── engine.py            # LLM conversation handler
+│   │   └── prompts.py           # System prompts (Italian)
 │   └── api/
-│       └── main.py            # FastAPI app
+│       └── main.py              # FastAPI app
 ├── tests/
+│   ├── fixtures/                # ✅ YAML-driven test cases
+│   │   ├── calc_basic.yaml
+│   │   ├── calc_partial_ownership.yaml
+│   │   ├── calc_partial_year.yaml
+│   │   ├── calc_sconti.yaml
+│   │   ├── calc_15day_rule.yaml
+│   │   └── calc_edge_cases.yaml
+│   └── test_imu.py
 ├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
@@ -105,9 +114,9 @@ CAF-AI/
 
 ## Build Order
 
-1. **IMU calculator** — pure Python, test with pytest, nail the formula
-2. **Torino aliquote JSON** — research and compile current rates
-3. **Chat engine** — LLM conversation with tool-calling to the calculator
+1. ~~**IMU calculator**~~ — done. 24 tests passing. Pure Python, YAML-driven test fixtures.
+2. ~~**Torino aliquote JSON**~~ — done. 2025 rates (confirmed same for 2026).
+3. **Chat engine** — LLM conversation with tool-calling to the calculator ← **next**
 4. **FastAPI API** — wrap it in an endpoint
 5. **Docker + deploy** — containerize, nginx, push to VPS
 6. **Scraper** (later) — populate aliquote for more comuni

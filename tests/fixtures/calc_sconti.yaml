@@ -1,0 +1,49 @@
+# Discount (sconto) scenarios
+
+- name: "Canone concordato — 25% sconto on IMU"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 957.60
+
+- name: "Comodato uso gratuito — 50% riduzione base imponibile"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    base_imponibile: 84000
+    imu_finale: 638.40
+
+- name: "Inagibile — 50% riduzione base + partial year"
+  input:
+    rendita_catastale: 800
+    categoria: "A/4"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 8
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    base_imponibile: 67200
+    imu_finale: 474.88
+
+- name: "Canone concordato + partial ownership"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 50
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 478.80

@@ -1,0 +1,47 @@
+# Edge cases
+
+- name: "Negozio (C/1) — different coefficiente"
+  input:
+    rendita_catastale: 2000
+    categoria: "C/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 115500
+    imu_finale: 1224.30
+
+- name: "Ufficio (A/10) — coefficiente 80"
+  input:
+    rendita_catastale: 1500
+    categoria: "A/10"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 126000
+    imu_finale: 1335.60
+
+- name: "Fabbricato D — coefficiente 65"
+  input:
+    rendita_catastale: 5000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 341250
+    imu_finale: 3617.25
+
+- name: "Unknown categoria — should raise error"
+  input:
+    rendita_catastale: 1000
+    categoria: "Z/99"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected_error: "Categoria catastale sconosciuta"
