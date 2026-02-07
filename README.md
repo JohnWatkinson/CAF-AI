@@ -7,8 +7,8 @@ Italian IMU (property tax) calculator with a conversational chat interface.
 
 ## Status
 
-1. ~~IMU calculator (pure Python)~~ — done, 24 tests passing
-2. ~~Torino aliquote data~~ — done (2025/2026 rates)
+1. ~~IMU calculator (pure Python)~~ — done, 84 tests passing
+2. ~~Aliquote data (10 comuni)~~ — done (Torino, Roma, Milano, Napoli, Palermo, Genova, Bologna, Firenze, Bari, Catania)
 3. ~~Chat engine (Claude + tool use)~~ — done
 4. ~~FastAPI API~~ — done
 5. ~~Lovable frontend (React)~~ — done
@@ -66,7 +66,7 @@ Test cases are YAML-driven — add new scenarios by editing files in `tests/fixt
 | Setting | File | Notes |
 |---------|------|-------|
 | LLM model | `src/chat/engine.py` | MODEL variable at top. Default: Claude Sonnet 4.5 |
-| Aliquote | `data/aliquote/torino_2025.json` | Per-comune rates, add more comuni as JSON files |
+| Aliquote | `data/aliquote/*.json` | Per-comune rates (10 comuni), add more as JSON files |
 | National figures | `data/imu_national.json` | Coefficienti, rivalutazione, sconti nazionali |
 | System prompt | `src/chat/prompts.py` | Italian chat tone and rules |
 | Port | `.env` → `APP_PORT` | Defaults to 80. Set to 8080 on VPS |

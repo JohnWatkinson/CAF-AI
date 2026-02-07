@@ -1,0 +1,24 @@
+{
+  "comune": "Palermo",
+  "provincia": "PA",
+  "anno": 2025,
+  "note": "Aliquote basate su Delibera CC n. 140 del 23/09/2020, confermate per 2025.",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 10.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://docs.comune.palermo.it/tributo-locale-dettaglio.php?cat=155",
+    "https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/nuova_imu/sceltaanno.htm?cc=G273&lista=0&anno=2025"
+  ]
+}

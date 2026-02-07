@@ -1,0 +1,24 @@
+{
+  "comune": "Roma",
+  "provincia": "RM",
+  "anno": 2025,
+  "note": "Delibera Assemblea Capitolina n. 182 del 19/12/2024. Roma applica maggiorazione ex-TASI (0.8‰).",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 11.4,
+    "canone_concordato": 11.4,
+    "aree_fabbricabili": 11.4,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 11.4
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1389958",
+    "https://www.comune.roma.it/web-resources/cms/documents/Deliberazione_Ass_Capitolina_182_2024_Aliquote_Imu_2025.pdf"
+  ]
+}

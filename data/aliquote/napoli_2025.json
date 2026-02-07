@@ -1,0 +1,24 @@
+{
+  "comune": "Napoli",
+  "provincia": "NA",
+  "anno": 2025,
+  "note": "Delibera CC n. 166 del 27/12/2024. Aliquote confermate al massimo (invariate rispetto al 2024).",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 10.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.napoli.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/54212",
+    "https://www.ansa.it/campania/notizie/2024/12/27/consiglio-comunale-napoli-conferma-aliquote-imu-per-2025_e3c36f5c-c58d-4647-8cc7-314a42b9ae5a.html"
+  ]
+}

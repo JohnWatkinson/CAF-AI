@@ -1,0 +1,24 @@
+{
+  "comune": "Bari",
+  "provincia": "BA",
+  "anno": 2025,
+  "note": "Delibera CC n. 104 del 12/12/2024. Nuovo regolamento IMU approvato con Delibera n. 13 del 25/02/2025.",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 10.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.bari.it/web/economia-tasse-e-tributi/i.m.u.-imposta-municipale-propria",
+    "https://www.comune.bari.it/documents/114995/57081622/Prospetto+aliquote+IMU+2025+-+Prospetto+1126.pdf"
+  ]
+}

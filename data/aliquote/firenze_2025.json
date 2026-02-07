@@ -1,0 +1,24 @@
+{
+  "comune": "Firenze",
+  "provincia": "FI",
+  "anno": 2025,
+  "note": "Delibera CC n. 89 del 23/12/2024. Mantenute agevolazioni per canone concordato, librerie, cinema, startup.",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 10.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.firenze.it/servizi/tributi-finanze-e-contravvenzioni/imu-anno-2025",
+    "https://servizi.comune.fi.it/sites/www.comune.fi.it/files/aliquote_imu_2025_0.pdf"
+  ]
+}

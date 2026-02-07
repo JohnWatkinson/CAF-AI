@@ -1,0 +1,24 @@
+{
+  "comune": "Catania",
+  "provincia": "CT",
+  "anno": 2025,
+  "note": "Delibera CC n. 42 del 09/12/2024. Aliquote confermate invariate dal 2020.",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 10.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.catania.it/informazioni/cstampa/default.aspx?cs=94667",
+    "https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/nuova_imu/download_lib.php?key=0900f23080782188&nome=254_DIMUNIC-15ct25c351d.pdf"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "comune": "Genova",
+  "provincia": "GE",
+  "anno": 2025,
+  "note": "Delibera CC n. 57/2024 e n. 41/2025. Aumento temporaneo canone concordato a 10.6‰ solo per 2025 (era 7.8‰).",
+  "aliquote": {
+    "abitazione_principale_lusso": 5.8,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 10.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.genova.it/tutti-gli-argomenti/tasse-e-tributi/imu-2025",
+    "https://www.comune.genova.it/sites/default/files/2025-01/DCC_57_2024%20-%20File%20primario%20-%20DCC-57-2024.pdf"
+  ]
+}

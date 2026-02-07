@@ -1,0 +1,24 @@
+{
+  "comune": "Milano",
+  "provincia": "MI",
+  "anno": 2025,
+  "note": "Delibera Consiglio Comunale. Aliquota agevolata per canone concordato.",
+  "aliquote": {
+    "abitazione_principale_lusso": 6.0,
+    "altri_fabbricati": 10.6,
+    "canone_concordato": 7.6,
+    "aree_fabbricabili": 10.6,
+    "fabbricati_rurali_strumentali": 1.0,
+    "fabbricati_gruppo_d": 10.6
+  },
+  "detrazioni": {
+    "abitazione_principale_lusso": {
+      "importo": 200,
+      "descrizione": "Detrazione fissa di €200 per abitazione principale di lusso"
+    }
+  },
+  "fonti": [
+    "https://www.comune.milano.it/en/argomenti/tributi/imu",
+    "https://delibere.comune.milano.it/api/attachments/download/273191"
+  ]
+}

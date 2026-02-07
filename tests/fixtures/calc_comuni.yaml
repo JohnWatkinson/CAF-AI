@@ -1,0 +1,712 @@
+# Per-comune test cases using actual 2025 aliquote
+# Tests the calculator with real rates from each comune's JSON data
+
+# === TORINO (lusso 5.75, altri 10.6, concordato 7.6) ===
+
+- name: "Torino — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Torino — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 5.75
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 966.00
+
+- name: "Torino — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 957.60
+
+- name: "Torino — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Torino — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Torino — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === ROMA (lusso 6.0, altri 11.4, concordato 11.4 — ex-TASI maggiorazione) ===
+
+- name: "Roma — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 11.4
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1915.20
+
+- name: "Roma — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Roma — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 11.4
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1436.40
+
+- name: "Roma — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 11.4
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 778.05
+
+- name: "Roma — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 11.4
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 957.60
+
+- name: "Roma — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 11.4
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 478.80
+
+# === MILANO (lusso 6.0, altri 10.6, concordato 7.6) ===
+
+- name: "Milano — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Milano — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Milano — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 957.60
+
+- name: "Milano — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Milano — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Milano — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === NAPOLI (lusso 6.0, altri 10.6, concordato 10.6) ===
+
+- name: "Napoli — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Napoli — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Napoli — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1335.60
+
+- name: "Napoli — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Napoli — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Napoli — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === PALERMO (lusso 6.0, altri 10.6, concordato 10.6) ===
+
+- name: "Palermo — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Palermo — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Palermo — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1335.60
+
+- name: "Palermo — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Palermo — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Palermo — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === GENOVA (lusso 5.8, altri 10.6, concordato 10.6) ===
+
+- name: "Genova — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Genova — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 5.8
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 974.40
+
+- name: "Genova — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1335.60
+
+- name: "Genova — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Genova — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Genova — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === BOLOGNA (lusso 6.0, altri 10.6, concordato 7.6) ===
+
+- name: "Bologna — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Bologna — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Bologna — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 7.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 957.60
+
+- name: "Bologna — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Bologna — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Bologna — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === FIRENZE (lusso 6.0, altri 10.6, concordato 10.6) ===
+
+- name: "Firenze — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Firenze — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Firenze — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1335.60
+
+- name: "Firenze — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Firenze — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Firenze — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === BARI (lusso 6.0, altri 10.6, concordato 10.6) ===
+
+- name: "Bari — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Bari — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Bari — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1335.60
+
+- name: "Bari — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Bari — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Bari — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
+
+# === CATANIA (lusso 6.0, altri 10.6, concordato 10.6) ===
+
+- name: "Catania — second home A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 168000.0
+    imu_finale: 1780.80
+
+- name: "Catania — luxury primary A/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/1"
+    aliquota_per_mille: 6.0
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 1008.00
+
+- name: "Catania — canone concordato A/2"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 25
+  expected:
+    imu_finale: 1335.60
+
+- name: "Catania — gruppo D/1"
+  input:
+    rendita_catastale: 1000
+    categoria: "D/1"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+  expected:
+    base_imponibile: 68250.0
+    imu_finale: 723.45
+
+- name: "Catania — comodato A/2 (50% riduzione base)"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 100
+    mesi_possesso: 12
+    sconto_percentuale: 0
+    riduzione_base_percentuale: 50
+  expected:
+    imu_finale: 890.40
+
+- name: "Catania — partial ownership 50%, 6 months"
+  input:
+    rendita_catastale: 1000
+    categoria: "A/2"
+    aliquota_per_mille: 10.6
+    percentuale_possesso: 50
+    mesi_possesso: 6
+    sconto_percentuale: 0
+  expected:
+    imu_finale: 445.20
