@@ -57,23 +57,31 @@ Pure Python. Takes structured input, returns structured output.
 - Structure: `{ "comune": "Torino", "anno": 2025, "aliquote": { "abitazione_principale_lusso": 0.6, "altri_fabbricati": 1.06, ... } }`
 - Later: scraper fills this for all comuni, or migrates to DB
 
-### 3. Chat Layer (`chat/engine.py`)
-- Sends conversation to LLM (Claude or OpenAI) with a system prompt
-- System prompt defines: you're an IMU assistant, you speak Italian, you collect the required inputs, you call the calculator, you explain the result
-- LLM does NOT calculate — it extracts user inputs and formats them for the calculator
-- Function calling / tool use pattern: LLM decides when it has enough info → calls `calculate_imu()`
+### 3. Chat Layer (`src/chat/`)
+- `engine.py` — ChatEngine class, manages conversation with Claude API
+- `prompts.py` — Italian system prompt (tu, one question at a time, never calculate)
+- `tools.py` — tool definitions for Claude + execution mapping to calculator
+- Claude Sonnet 4.5 with tool use — LLM collects inputs, calls `calculate_imu()`
+- Also exposes `calculate_mesi_possesso` and `get_aliquote_comune` as tools
 
-### 4. API (`api/main.py`)
+### 4. API (`src/api/main.py`)
 FastAPI app with:
 - `POST /chat` — takes message + session_id, returns assistant reply
+- `POST /reset` — clear a session
+- `GET /health` — health check
+- `GET /` — serves simple chat UI
 - Session state stored in memory (dict) for PoC, Redis later
-- CORS enabled for future frontend
+- CORS enabled for Lovable frontend
 
-### 5. Docker (`docker-compose.yml`)
-- Single container for PoC (FastAPI app)
-- Nginx reverse proxy (same pattern as fashion-starter)
-- `.env` for API keys
-- Ready to add Redis, Postgres containers later
+### 5. Simple UI (`src/api/static/index.html`)
+- Single HTML file, no framework, no build step
+- Chat interface that calls `POST /chat`
+- Temporary — Lovable replaces this later
+
+### 6. Docker
+- `Dockerfile` — Python 3.11 slim, uvicorn on port 8000
+- `docker-compose.yml` — single service, .env for API key
+- Ready to add nginx, Redis, Postgres containers later (same pattern as fashion-starter)
 
 ---
 
@@ -90,11 +98,14 @@ CAF-AI/
 │   ├── calculator/              # ✅ Done
 │   │   ├── imu.py               # Pure calculation logic
 │   │   └── coefficienti.py      # Category → coefficient lookup, data loader
-│   ├── chat/                    # Next
-│   │   ├── engine.py            # LLM conversation handler
-│   │   └── prompts.py           # System prompts (Italian)
-│   └── api/
-│       └── main.py              # FastAPI app
+│   ├── chat/                    # ✅ Done
+│   │   ├── engine.py            # ChatEngine — Claude API conversation
+│   │   ├── prompts.py           # Italian system prompt
+│   │   └── tools.py             # Tool definitions + execution
+│   └── api/                     # ✅ Done
+│       ├── main.py              # FastAPI app
+│       └── static/
+│           └── index.html       # Simple chat UI (Lovable replaces later)
 ├── tests/
 │   ├── fixtures/                # ✅ YAML-driven test cases
 │   │   ├── calc_basic.yaml
@@ -116,10 +127,12 @@ CAF-AI/
 
 1. ~~**IMU calculator**~~ — done. 24 tests passing. Pure Python, YAML-driven test fixtures.
 2. ~~**Torino aliquote JSON**~~ — done. 2025 rates (confirmed same for 2026).
-3. **Chat engine** — LLM conversation with tool-calling to the calculator ← **next**
-4. **FastAPI API** — wrap it in an endpoint
-5. **Docker + deploy** — containerize, nginx, push to VPS
-6. **Scraper** (later) — populate aliquote for more comuni
+3. ~~**Chat engine**~~ — done. Claude Sonnet 4.5 + tool use. CLI + web UI working.
+4. ~~**FastAPI API**~~ — done. POST /chat, session management, CORS.
+5. ~~**Simple UI**~~ — done. Single HTML chat interface served by FastAPI.
+6. ~~**Docker**~~ — done. Single container, docker-compose.
+7. **Deploy to VPS** — nginx, same pattern as fashion-starter ← **next**
+8. **Scraper** (later) — populate aliquote for more comuni
 
 ---
 

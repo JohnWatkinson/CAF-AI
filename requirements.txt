@@ -2,3 +2,5 @@ pyyaml
 pytest
 anthropic
 python-dotenv
+fastapi
+uvicorn
